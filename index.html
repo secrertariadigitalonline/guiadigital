@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bom Baiano Lapa - Doces que alegram seu dia</title>
+    <!-- Bootstrap 5 CSS + Icons + Google Fonts + Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fffaf5;
+            color: #3e2a27;
+            scroll-behavior: smooth;
+        }
+
+        /* cores temáticas: quentinho, doce e acolhedor */
+        :root {
+            --doce-marrom: #6b3e2c;
+            --doce-rosa: #f7c5cc;
+            --doce-creme: #fff0e5;
+            --doce-dourado: #e0a878;
+            --doce-verde: #a3c9a8;
+        }
+
+        .navbar {
+            background-color: #ffffffdd;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--doce-marrom) !important;
+            letter-spacing: -0.5px;
+        }
+        .navbar-brand i {
+            color: #e0a878;
+            margin-right: 5px;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #5a3e32 !important;
+            transition: 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--doce-dourado) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #fff2e6 0%, #ffe6dc 100%);
+            padding: 100px 0 80px;
+            border-bottom-left-radius: 3rem;
+            border-bottom-right-radius: 3rem;
+        }
+        .hero h1 {
+            font-weight: 800;
+            font-size: 3.3rem;
+            color: var(--doce-marrom);
+        }
+        .hero .lead {
+            font-size: 1.25rem;
+            color: #7a5a4a;
+        }
+        .btn-doces {
+            background-color: var(--doce-marrom);
+            color: white;
+            border-radius: 50px;
+            padding: 12px 32px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-doces:hover {
+            background-color: #8b5a44;
+            transform: scale(1.02);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .btn-outline-doces {
+            border: 2px solid var(--doce-marrom);
+            background: transparent;
+            border-radius: 50px;
+            padding: 10px 28px;
+            font-weight: 600;
+            color: var(--doce-marrom);
+            transition: 0.3s;
+        }
+        .btn-outline-doces:hover {
+            background-color: var(--doce-marrom);
+            color: white;
+        }
+
+        /* cards produtos */
+        .card-doce {
+            border: none;
+            background: white;
+            border-radius: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+        .card-doce:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(107, 62, 44, 0.1);
+        }
+        .card-img-top {
+            border-radius: 1.5rem 1.5rem 0 0;
+            object-fit: cover;
+            height: 200px;
+        }
+        .preco {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--doce-marrom);
+        }
+
+        /* seção de diferenciais com ícones */
+        .feature-icon {
+            background-color: #f9e5d9;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+        }
+        .feature-icon i {
+            font-size: 2.8rem;
+            color: var(--doce-marrom);
+        }
+
+        /* área sobre a empresa / dados */
+        .bg-dados {
+            background: linear-gradient(120deg, #fff1e6, #ffe9de);
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .info-cnpj {
+            font-family: monospace;
+            background: white;
+            padding: 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            border-left: 5px solid var(--doce-dourado);
+        }
+
+        /* Rodapé */
+        footer {
+            background: #3e2a27;
+            color: #f1e0d6;
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+        }
+        footer a {
+            color: #f7c5cc;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .social-icons a {
+            display: inline-flex;
+            background: rgba(255,255,255,0.1);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            background: var(--doce-dourado);
+            color: #3e2a27;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .hero {
+                padding: 70px 0 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-candy-cane"></i> Bom Baiano Lapa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#produtos">Doces</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Início -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="badge bg-warning bg-opacity-25 text-dark mb-3 py-2 px-3 rounded-pill"><i class="fas fa-certificate"></i> Tradição desde 2009</span>
+                    <h1 class="mb-3">Os melhores doces <br> da <span style="color:#e0a878;">Lapa de Baixo</span></h1>
+                    <p class="lead mb-4">Tempero caseiro, ingredientes selecionados e muito carinho em cada produto. Distribuição e varejo com o sabor que conquista gerações.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#produtos" class="btn btn-doces"><i class="fas fa-shopping-bag me-2"></i>Ver doces</a>
+                        <a href="#contato" class="btn btn-outline-doces"><i class="fas fa-map-marker-alt me-2"></i>Encontre a gente</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3020/3020161.png" alt="doces ícone" class="img-fluid" style="max-width: 75%; filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.1));">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frases / Diferenciais com ícones -->
+    <div class="container py-5">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="feature-icon"><i class="fas fa-chocolate-bar"></i></div>
+                <h5 class="fw-bold">Ingredientes Premium</h5>
+                <p class="text-muted">Chocolate belga, castanhas selecionadas e receitas exclusivas.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+                <h5 class="fw-bold">Distribuição rápida</h5>
+                <p class="text-muted">Atendemos toda a região da Lapa e São Paulo com agilidade.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h5 class="fw-bold">Sabor que emociona</h5>
+                <p class="text-muted">Mais de 15 anos levando alegria aos momentos especiais.</p>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <i class="fas fa-quote-left me-2 text-secondary"></i>
+            <span class="fst-italic fs-5" style="color:#6b4c3b;">"A felicidade está nos pequenos prazeres – e um bom doce transforma o dia"</span>
+            <i class="fas fa-quote-right ms-2 text-secondary"></i>
+            <p class="mt-3 text-muted">— Equipe Bom Baiano Lapa</p>
+        </div>
+    </div>
+
+    <!-- Produtos - cards com ícones e preços fictícios (loja) -->
+    <section id="produtos" class="py-5 bg-light" style="background-color: #fff5ef !important;">
+        <div class="container">
+            <div class="row mb-5 text-center">
+                <div class="col-12">
+                    <h2 class="fw-bold"><i class="fas fa-candy-cane me-2" style="color:#b97f62;"></i>Nossos queridinhos</h2>
+                    <p class="text-muted">Doces artesanais, produzidos com amor e receita da família Fernandes.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <!-- Produto 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-doce h-100">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3037/3037635.png" class="card-img-top p-3 bg-white" style="height: 180px; object-fit: contain;" alt="Brigadeiro Gourmet">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Brigadeiro Gourmet</h5>
+                            <p class="card-text text-muted">Tradicional e com granulado crocante, feito com leite condensado premium.</p>
+                            <p class="preco">R$ 12,90 <span class="fs-6 text-muted">/ cx 6un</span></p>
+                            <button class="btn btn-sm btn-outline-doces rounded-pill px-4"><i class="fas fa-cart-plus"></i> Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-doce h-100">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1640/1640995.png" class="card-img-top p-3 bg-white" style="height: 180px; object-fit: contain;" alt="Trufas">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Trufa de Morango</h5>
+                            <p class="card-text text-muted">Cobertura de chocolate ao leite com recheio cremoso de morango.</p>
+                            <p class="preco">R$ 9,90 <span class="fs-6 text-muted">/ unidade</span></p>
+                            <button class="btn btn-sm btn-outline-doces rounded-pill px-4"><i class="fas fa-cart-plus"></i> Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-doce h-100">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2930/2930012.png" class="card-img-top p-3 bg-white" style="height: 180px; object-fit: contain;" alt="Bolo de pote">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Bolo de Pote</h5>
+                            <p class="card-text text-muted">Bolo de chocolate com brigadeiro e raspas de chocolate.</p>
+                            <p class="preco">R$ 15,90 <span class="fs-6 text-muted">/ 250ml</span></p>
+                            <button class="btn btn-sm btn-outline-doces rounded-pill px-4"><i class="fas fa-cart-plus"></i> Pedir</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card card-doce h-100">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3774/3774683.png" class="card-img-top p-3 bg-white" style="height: 180px; object-fit: contain;" alt="Pé de moleque">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Pé de Moleque</h5>
+                            <p class="card-text text-muted">Amendoim crocante com calda de açúcar, receita da família.</p>
+                            <p class="preco">R$ 7,90 <span class="fs-6 text-muted">/ 100g</span></p>
+                            <button class="btn btn-sm btn-outline-doces rounded-pill px-4"><i class="fas fa-cart-plus"></i> Pedir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-doces rounded-pill"><i class="fas fa-store"></i> Ver cardápio completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre + INFORMAÇÕES DA EMPRESA (dados exigidos) -->
+    <section id="sobre" class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <div class="bg-dados">
+                        <h3 class="fw-bold mb-3"><i class="fas fa-info-circle me-2" style="color:#b97f62;"></i> Dados da Empresa</h3>
+                        <p><strong>🍬 Razão Social:</strong> FERNANDES DISTRIBUIDORA DE DOCES LTDA.</p>
+                        <p><strong>⭐ Nome Fantasia:</strong> BOM BAIANO LAPA</p>
+                        <p><strong>📅 Situação Cadastral:</strong> ATIVA desde <strong>02/02/2009</strong></p>
+                        <p><strong>🔢 CNPJ:</strong> 10.665.706/0001-26</p>
+                        <div class="info-cnpj mt-3">
+                            <i class="fas fa-map-pin me-1"></i> <strong>Endereço:</strong> Rua Tenente Landy, Lapa de Baixo <br>
+                            São Paulo - SP, CEP: 05.068-020
+                        </div>
+                        <p class="mt-3 mb-0 small text-muted"><i class="fas fa-check-circle text-success"></i> CNPJ ativo, distribuidora oficial desde 2009 com tradição no ramo de doces e conveniência.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-2 order-1">
+                    <h2 class="fw-bold">Quem somos?</h2>
+                    <p class="lead">A Fernandes Distribuidora de Doces é referência na Zona Oeste de São Paulo.</p>
+                    <p>Há mais de 15 anos, o Bom Baiano Lapa leva sabor e qualidade para a Lapa de Baixo e região. Nossa missão é oferecer doces artesanais e produtos para tornar os momentos em família ainda mais doces. Com uma fábrica própria e distribuição eficiente, atendemos padarias, mercados e também o consumidor final.</p>
+                    <p><i class="fas fa-award text-warning"></i> <strong>Valorizamos o comércio local:</strong> parceria com produtores da região e entrega com carinho.</p>
+                    <div class="mt-3 d-flex gap-3">
+                        <span class="badge bg-secondary bg-opacity-25 text-dark p-2"><i class="fab fa-instagram"></i> @bombaianolapa</span>
+                        <span class="badge bg-secondary bg-opacity-25 text-dark p-2"><i class="fab fa-whatsapp"></i> (11) 9xxxx-xxxx</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de informações complementares: horário, ícones de contato, localização simples -->
+    <div class="container pb-4">
+        <div class="row g-4 text-center">
+            <div class="col-sm-4">
+                <i class="fas fa-clock fa-2x" style="color:#b97f62;"></i>
+                <h5 class="mt-2">Horário de Funcionamento</h5>
+                <p class="text-muted">Seg-Sex: 8h às 19h | Sáb: 9h às 17h <br>Domingo: Fechado (entregas por app)</p>
+            </div>
+            <div class="col-sm-4">
+                <i class="fas fa-phone-alt fa-2x" style="color:#b97f62;"></i>
+                <h5 class="mt-2">Atendimento</h5>
+                <p class="text-muted">(11) 3832-4455 <br>WhatsApp: (11) 98765-4321</p>
+            </div>
+            <div class="col-sm-4">
+                <i class="fas fa-envelope fa-2x" style="color:#b97f62;"></i>
+                <h5 class="mt-2">E-mail comercial</h5>
+                <p class="text-muted">contato@bombaianolapa.com.br <br>vendas@fernandesdoces.com.br</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mapa fake + citação / localização detalhada -->
+    <div class="container my-4">
+        <div class="row bg-white rounded-4 shadow-sm p-3 align-items-center">
+            <div class="col-md-6">
+                <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.059885738364!2d-46.69942582362372!3d-23.524511160591416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef8814e6f6e2b%3A0x7a3d7c9fe8e74e1!2sLapa%20de%20Baixo%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1742320000000!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0 ps-md-4">
+                <h4><i class="fas fa-location-dot me-2" style="color:#b97f62;"></i> Venha nos visitar!</h4>
+                <p><strong>Rua Tenente Landy, Lapa de Baixo - São Paulo, SP</strong><br>CEP 05.068-020. Próximo ao Sesc e estações de trem.</p>
+                <p><i class="fas fa-star-of-life"></i> Retire seus pedidos diretamente na distribuidora ou peça por delivery. Aceitamos cartões e PIX.</p>
+                <a href="#" class="btn btn-sm btn-outline-doces rounded-pill"><i class="fab fa-whatsapp"></i> Fale conosco</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé completo com informações extras -->
+    <footer class="pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-candy-cane"></i> Bom Baiano Lapa</h5>
+                    <p class="small">Doces que abraçam a tradição baiana com o coração paulistano. Distribuidora com mais de 15 anos de história.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h6><i class="fas fa-building"></i> Dados Legais</h6>
+                    <ul class="list-unstyled small">
+                        <li>CNPJ: 10.665.706/0001-26</li>
+                        <li>FERNANDES DISTRIBUIDORA DE DOCES LTDA</li>
+                        <li>Situação Cadastral: Ativa (02/02/2009)</li>
+                        <li>© 2025 - Todos os direitos reservados</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6><i class="fas fa-store"></i> Endereço & Contato</h6>
+                    <address class="small">
+                        R Tenente Landy, Lapa de Baixo<br>
+                        São Paulo - SP, 05.068-020<br>
+                        Telefone: (11) 3832-4455<br>
+                        E-mail: contato@bombaianolapa.com.br
+                    </address>
+                </div>
+            </div>
+            <hr class="mt-3 opacity-25">
+            <div class="text-center small py-2">
+                <span>🍬 “Distribuindo alegria e sabor desde 2009” 🍬</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS + Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // pequeno script para navbar ativa no scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-sm');
+                nav.style.backgroundColor = "#ffffffdd";
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.style.backgroundColor = "#ffffffdd";
+            }
+        });
+    </script>
+</body>
+</html>
